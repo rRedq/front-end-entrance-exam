@@ -1,0 +1,6 @@
+@import '../../app/styles/common.scss';
+
+.container {
+  @include flex(space-between);
+  height: 359px;
+}

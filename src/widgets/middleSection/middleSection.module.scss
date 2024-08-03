@@ -1,0 +1,11 @@
+@import '../../app/styles/common.scss';
+
+.container {
+  @include flex(space-between);
+  height: 289px;
+}
+
+.rightBlock {
+  @include flex(space-between, $direction: column);
+  width: 267px;
+}

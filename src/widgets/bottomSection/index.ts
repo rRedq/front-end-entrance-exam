@@ -1,0 +1,1 @@
+export { bottomSection } from './bottomSection';

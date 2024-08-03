@@ -1,0 +1,1 @@
+export { middleSection } from './middleSection';
