@@ -1,0 +1,83 @@
+@import '../../app/styles/common.scss';
+
+.overlay {
+  @include flex(center, 16px, $alignItems: center);
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(55, 55, 55, 0.719);
+  top: 0;
+}
+.modal {
+  @include flex(center, 10px, column, $alignItems: center);
+  position: absolute;
+  min-width: 200px;
+  min-height: 50px;
+  margin: 20px;
+  padding: 2% 1%;
+  border-radius: 4px;
+  background: var(--pearl);
+  z-index: 1;
+  transform: scale(0);
+  transition: all 0.5s;
+  color: var(--white);
+  user-select: none;
+
+  &-active {
+    transform: scale(1);
+  }
+}
+
+.close {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--white);
+  position: absolute;
+  top: -20%;
+  right: -5%;
+
+  &:hover {
+    cursor: pointer;
+    background: var(--white);
+
+    &:before,
+    &:after {
+      background: var(--pearl);
+    }
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60%;
+    height: 2px;
+    background: var(--pearl);
+  }
+
+  &:before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &:after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+}
+
+.btnCover {
+  @include flex($gap: 7px);
+}
+
+.btn {
+  padding: 3px 2px;
+  border-radius: 4px;
+  font-size: 12px;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.5;
+  }
+}
