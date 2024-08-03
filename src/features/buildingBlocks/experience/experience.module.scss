@@ -1,0 +1,43 @@
+@import '../../../app/styles/common.scss';
+
+.wrapper {
+  @include block;
+  @include flex($direction: column, $gap: 16px);
+  width: 411px;
+  text-align: start;
+}
+
+.container {
+  @include flex($direction: column);
+}
+
+.cover {
+  @include flex($direction: column, $gap: 8px);
+  background: var(--white);
+  border-radius: 10px;
+  padding: 8px;
+}
+
+.firstCase {
+  @include flex(space-between);
+}
+
+.firstItem {
+  background: var(--toxic-green);
+}
+
+.firstLabel {
+  @include fontShape(8px, 500, 12.4px);
+  background: #7e7312 40%;
+  padding: 2px 3px;
+  color: var(--yellow);
+  border-radius: 59px;
+}
+
+.title {
+  @include fontShape(8px, 500, 12px);
+}
+
+.position {
+  @include fontShape(10px, 500, 15px);
+}

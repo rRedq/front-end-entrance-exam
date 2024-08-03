@@ -1,0 +1,39 @@
+@import '../../../app/styles/common.scss';
+
+.wrapper {
+  @include block;
+  width: 268px;
+  height: 100%;
+}
+
+.container {
+  @include flex($wrap: wrap, $gap: 10px);
+}
+
+.case {
+  @include flex($direction: column, $gap: 7px);
+  width: 116px;
+  min-height: 108px;
+  height: fit-content;
+  background: var(--white);
+  border-radius: 8px;
+  padding: 8px;
+  text-align: start;
+}
+
+.firstCase {
+  background: var(--toxic-green);
+}
+
+.firstContainer {
+  @include flex(space-between);
+}
+
+.primaryTitle {
+  @include fontShape($fw: 500, $lh: 15px);
+}
+
+.secondaryTitle {
+  @include fontShape(8px, 400, 12px);
+  word-wrap: break-word;
+}

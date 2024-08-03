@@ -1,0 +1,18 @@
+@import '../../../app/styles/common.scss';
+
+.wrapper {
+  @include block;
+  @include flex($direction: column, $gap: 11px);
+  width: 100%;
+  background: var(--black);
+
+  p {
+    color: var(--white);
+  }
+}
+
+.container {
+  @include flex($gap: 8px);
+  @include fontShape;
+  color: var(--white);
+}

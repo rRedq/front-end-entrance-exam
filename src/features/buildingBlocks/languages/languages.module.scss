@@ -1,0 +1,35 @@
+@import '../../../app/styles/common.scss';
+
+.wrapper {
+  @include block;
+  @include flex($direction: column, $gap: 16px);
+  width: 267px;
+}
+
+.container {
+  @include flex($direction: column, $gap: 10px);
+}
+
+.line {
+  @include flex(start);
+  height: 11px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.language {
+  @include fontShape(10px, 500, 10.4px);
+  width: 70px;
+  text-align: start;
+}
+
+.level {
+  width: 70%;
+}
+
+.fill {
+  height: 100%;
+  background: var(--toxic-green);
+}

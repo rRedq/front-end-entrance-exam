@@ -1,0 +1,32 @@
+@import '../../../app/styles/common.scss';
+
+.wrapper {
+  @include block;
+  @include flex($direction: column, $gap: 12px);
+  width: 124px;
+}
+
+.cover {
+  @include flex(center, 16px, $wrap: wrap);
+  border-radius: 6px;
+  width: 76px;
+  padding: 14px 4px;
+  background: var(--white);
+  position: relative;
+}
+
+.container {
+  @include flex($direction: column, $alignItems: center, $gap: 10px);
+}
+
+.coverLabel {
+  @include fontShape(5px, 500, 7.1px);
+  position: absolute;
+  background: var(--black);
+  top: -5px;
+  left: 10;
+  height: 11px;
+  padding: 2px 6px;
+  border-radius: 59px;
+  color: var(--white);
+}

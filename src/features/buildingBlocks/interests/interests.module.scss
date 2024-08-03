@@ -1,0 +1,22 @@
+@import '../../../app/styles/common.scss';
+
+.wrapper {
+  @include block;
+  @include flex($direction: column, $gap: 16px);
+  height: 177px;
+}
+
+.content {
+  @include flex($wrap: wrap, $gap: 8px);
+}
+
+.contentItem {
+  @include fontShape(10px, 400, 15px);
+  border-radius: 40px;
+  background: var(--white);
+  padding: 4px 10px 4px 10px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
