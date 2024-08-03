@@ -1,0 +1,40 @@
+@mixin flex(
+  $content: false,
+  $gap: 0,
+  $direction: row,
+  $wrap: nowrap,
+  $alignItems: false,
+  $grow: false
+) {
+  display: flex;
+
+  @if $content {
+    justify-content: $content;
+  }
+
+  @if $direction != row {
+    flex-direction: $direction;
+  }
+
+  @if $gap != 0 {
+    gap: $gap;
+  }
+
+  @if $wrap != nowrap {
+    flex-wrap: $wrap;
+  }
+
+  @if $alignItems {
+    align-items: $alignItems;
+  }
+
+  @if $grow {
+    flex-grow: $grow;
+  }
+}
+
+@mixin fontShape($fs: 10px, $fw: 400, $lh: 15px) {
+  font-size: $fs;
+  font-weight: $fw;
+  line-height: $lh;
+}
