@@ -29,10 +29,20 @@ interface ExperienceData {
   list: string[];
 }
 
+interface InitialData {
+  contacts: ContactsData;
+  education: EducationItem[];
+  experience: ExperienceData[];
+  interests: string[];
+  languages: LanguageData[];
+  profileName: ProfileNameData;
+}
+
 export {
   type EducationItem,
   type ProfileNameData,
   type ContactsData,
   type LanguageData,
   type ExperienceData,
+  type InitialData,
 };

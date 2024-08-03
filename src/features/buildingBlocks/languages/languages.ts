@@ -2,6 +2,11 @@ import { div, input, p } from 'shared/lib/dom/tag-function';
 import style from './languages.module.scss';
 import { LanguageData } from 'shared/types/dataTypes';
 import { showModal } from 'features/showModal';
+import { initialData } from 'shared/initialData';
+import { getLocalState, setLocalState } from 'shared/lib/utils';
+
+const localState = getLocalState('languages');
+const data: LanguageData[] = localState ? localState : [...initialData.languages];
 
 const createLine = (obj: LanguageData, index: number) => {
   const { language, level } = obj;
@@ -42,20 +47,6 @@ const updateLanguage = (language: HTMLElement, fill: HTMLElement, index: number)
     data.splice(index, 1, { language: languageValue, level: levelValue });
     language.textContent = languageValue;
     fill.style.width = `${levelValue}%`;
+    setLocalState('languages', data);
   });
 };
-
-const data: LanguageData[] = [
-  {
-    language: 'English',
-    level: '100',
-  },
-  {
-    language: 'Spanish',
-    level: '80',
-  },
-  {
-    language: 'French',
-    level: '70',
-  },
-];

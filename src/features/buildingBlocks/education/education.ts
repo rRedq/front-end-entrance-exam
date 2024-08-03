@@ -3,27 +3,11 @@ import style from './education.module.scss';
 import heart from 'shared/assets/images/heart.svg';
 import { showModal } from 'features/showModal';
 import { EducationItem } from 'shared/types/dataTypes';
+import { initialData } from 'shared/initialData';
+import { getLocalState, setLocalState } from 'shared/lib/utils';
 
-const data: EducationItem[] = [
-  {
-    year: '2024',
-    title: 'UX/UI',
-    tags: ['UX', 'UI', 'research', 'DesignSystem', 'Agile', 'wireframing', 'figma', 'IA'],
-    source: 'Neoland',
-  },
-  {
-    year: '2022',
-    title: 'Product designer',
-    tags: ['analytics', 'research', 'prototype', 'wireframing'],
-    source: 'Coursera',
-  },
-  {
-    year: '2017 - 2021',
-    title: 'Graphic design',
-    tags: ['branding', 'web', 'illustration', 'adobe'],
-    source: 'Cali Institute of the Arts',
-  },
-];
+const localState = getLocalState('education');
+const data = localState ? localState : [...initialData.education];
 
 const createCase = (obj: EducationItem, i: number) => {
   const keys = Object.keys(obj) as (keyof EducationItem)[];
@@ -83,10 +67,8 @@ const updateEducation = (
   showModal(requestInput, () => {
     const newValue = requestInput.value;
     elem.textContent = newValue;
-    if (key === 'tags') {
-      data[caseIndex][key].splice(itemIndex, 1, newValue.replace('#', ''));
-    } else {
-      data[caseIndex][key] = newValue;
-    }
+    if (key === 'tags') data[caseIndex][key].splice(itemIndex, 1, newValue.replace('#', ''));
+    else data[caseIndex][key] = newValue;
+    setLocalState('education', data);
   });
 };

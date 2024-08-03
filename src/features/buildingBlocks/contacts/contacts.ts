@@ -2,6 +2,11 @@ import { div, input, p } from 'shared/lib/dom/tag-function';
 import style from './contacts.module.scss';
 import { showModal } from 'features/showModal';
 import { ContactsData } from 'shared/types/dataTypes';
+import { initialData } from 'shared/initialData';
+import { getLocalState, setLocalState } from 'shared/lib/utils';
+
+const localState = getLocalState('contacts');
+let data = localState ? localState : { ...initialData.contacts };
 
 export const contacts = () => {
   const { label, email, phone } = data;
@@ -32,11 +37,6 @@ const updateContacts = (key: keyof ContactsData, elem: HTMLElement) => {
     const newValue = requestInput.value;
     elem.textContent = newValue;
     data = { ...data, [key]: newValue };
+    setLocalState('contacts', data);
   });
-};
-
-let data: ContactsData = {
-  label: 'Let´s chat! I´m ready to work on exciting projects',
-  email: 'vann19bj@gmail.com',
-  phone: '+34 666 666 666',
 };

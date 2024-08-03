@@ -2,6 +2,11 @@ import { div, p, ul, li, input } from 'shared/lib/dom/tag-function';
 import style from './experience.module.scss';
 import { ExperienceData } from 'shared/types/dataTypes';
 import { showModal } from 'features/showModal';
+import { initialData } from 'shared/initialData';
+import { getLocalState, setLocalState } from 'shared/lib/utils';
+
+const localState = getLocalState('experience');
+const data = localState ? localState : [...initialData.experience];
 
 const createLeftSide = (position: string, time: string, i: number) => {
   const experiencedPosition = p({
@@ -76,42 +81,8 @@ const updateExperience = (
   showModal(requestInput, () => {
     const newValue = requestInput.value;
     elem.textContent = newValue;
-    if (key === 'list') {
-      data[dataIndex][key].splice(listIndex, 1, newValue);
-    } else {
-      data.splice(dataIndex, 1, { ...data[dataIndex], [key]: newValue });
-    }
+    if (key === 'list') data[dataIndex][key].splice(listIndex, 1, newValue);
+    else data.splice(dataIndex, 1, { ...data[dataIndex], [key]: newValue });
+    setLocalState('experience', data);
   });
 };
-
-const data: ExperienceData[] = [
-  {
-    period: 'Jul. 2023 - Ago. 2023',
-    position: 'Senior Graphic Designer',
-    time: 'Pinnacle | Full-time',
-    list: [
-      'Research and brainstorm various design ideas for content and marketing.',
-      'Review the work submitted by Junior Designers and sharing feedback.',
-    ],
-  },
-  {
-    period: 'Ene. 2021 - Jul. 2023',
-    position: 'Graphic / Web designer',
-    time: 'Double Square | Full-time',
-    list: [
-      'Development of internal projects from scratch, product design of brands..',
-      'Landing page, webapps and hybrid apps.',
-      'Taking decisions with stakeholders for the future of products such as Beagle labs, myur...',
-    ],
-  },
-  {
-    period: 'Feb. 2021 - Jul. 2023',
-    position: 'Graphic Designer',
-    time: 'Freelance',
-    list: [
-      'Visual design for Events, Brands and Products.',
-      'Product design, Packaging Design.',
-      'Logo Design.',
-    ],
-  },
-];

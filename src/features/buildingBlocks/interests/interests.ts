@@ -1,19 +1,11 @@
 import { div, p, input } from 'shared/lib/dom/tag-function';
 import style from './interests.module.scss';
 import { showModal } from 'features/showModal';
+import { initialData } from 'shared/initialData';
+import { getLocalState, setLocalState } from 'shared/lib/utils';
 
-const data: string[] = [
-  'branding',
-  'brand identity',
-  'logo',
-  'typography',
-  'photography',
-  'designing',
-  'poster design',
-  'research',
-  'social networks',
-  'illustration',
-];
+const localState = getLocalState('interests');
+const data: string[] = localState ? localState : [...initialData.interests];
 
 const itemList = data.map((item, index) =>
   div({
@@ -36,5 +28,6 @@ const updateInterests = (index: number) => {
     const newValue = requestInput.value;
     data.splice(index, 1, newValue);
     itemList[index].textContent = newValue;
+    setLocalState('interests', data);
   });
 };
