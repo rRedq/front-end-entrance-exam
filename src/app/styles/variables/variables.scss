@@ -3,3 +3,24 @@
   border-radius: 12px;
   background: var(--light-grey);
 }
+
+@mixin wave {
+  position: relative;
+  overflow: hidden;
+}
+
+@mixin btn {
+  color: var(--light-grey);
+  background: var(--deep-grey);
+  border: 1px solid var(--light-grey);
+  border-radius: 4px;
+  text-decoration: none;
+  padding: 7px 10px;
+  transition: all 0.3s;
+
+  &:hover {
+    cursor: pointer;
+    background: var(--green);
+    color: var(--light-grey);
+  }
+}

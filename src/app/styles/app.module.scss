@@ -1,0 +1,13 @@
+@import './common.scss';
+
+.cv {
+  @include flex($direction: column, $gap: 20px);
+  width: 595px;
+  padding: 15px 20px;
+}
+
+.saveBtn {
+  position: absolute;
+  right: -25%;
+  @include btn;
+}

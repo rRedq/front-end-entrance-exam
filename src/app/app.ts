@@ -3,17 +3,19 @@ import { downloadPdf } from 'shared/lib/utils';
 import { bottomSection } from 'widgets/bottomSection';
 import { middleSection } from 'widgets/middleSection';
 import { upperSection } from 'widgets/upperSection';
+import style from './styles/app.module.scss';
 import './styles/global.scss';
 
 export const createApp = () => {
-  const btn = div({ textContent: 'button', onclick: () => downloadPdf(app, 'resume') });
+  const btn = div({
+    className: style.saveBtn,
+    textContent: 'Download PDF',
+    onclick: () => downloadPdf(app, 'cv'),
+  });
 
-  const app = main({ className: 'resume' }, [
-    upperSection(),
-    middleSection(),
-    bottomSection(),
-    btn,
-  ]);
+  const app = main({ className: style.cv }, [upperSection(), middleSection(), bottomSection()]);
 
-  return app;
+  const cover = div({ style: { position: 'relative' } }, [btn, app]);
+
+  return cover;
 };
