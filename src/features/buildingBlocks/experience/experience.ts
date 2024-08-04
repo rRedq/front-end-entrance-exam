@@ -57,7 +57,7 @@ const createLine = (param: ExperienceData, i: number) => {
           ? [experiencePeriod, div({ className: style.firstLabel, textContent: 'most recent' })]
           : [experiencePeriod]
       ),
-      div({ style: { display: 'flex', gap: '22px', justifyContent: 'start' } }, [
+      div({ className: style.caseLine }, [
         createLeftSide(position, time, i),
         createRightSide(list, i),
       ]),

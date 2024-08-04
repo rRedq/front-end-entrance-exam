@@ -36,11 +36,17 @@ body {
 #app {
   margin: 0 auto;
   text-align: center;
-  background: var(--white);
+  padding: 2%;
 }
 
 .label {
   @include fontShape(14px, 500, 21px);
   text-align: start;
   color: var(--black);
+}
+
+@media screen and (width < 350px) {
+  body {
+    min-width: 280px;
+  }
 }

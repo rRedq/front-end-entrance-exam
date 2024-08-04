@@ -68,3 +68,21 @@
     cursor: pointer;
   }
 }
+
+.caseLine {
+  @include flex(start, $gap: 22px);
+}
+
+@media screen and (width < 500px) {
+  .wrapper {
+    width: fit-content;
+  }
+
+  .caseLine {
+    flex-direction: column;
+  }
+
+  .cover {
+    max-height: fit-content;
+  }
+}

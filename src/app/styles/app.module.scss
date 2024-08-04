@@ -4,10 +4,58 @@
   @include flex($direction: column, $gap: 20px);
   width: 595px;
   padding: 15px 20px;
+  background: var(--white);
 }
 
 .saveBtn {
   position: absolute;
   right: -25%;
+  z-index: 2;
   @include btn;
+}
+
+.cover {
+  position: relative;
+}
+
+@media screen and (width < 920px) {
+  .saveBtn {
+    right: 0;
+  }
+}
+
+@media screen and (width < 630px) {
+  .cover {
+    width: fit-content;
+  }
+  .cv {
+    width: 100%;
+  }
+}
+
+@media screen and (width < 500px) {
+  .saveBtn {
+    all: unset;
+    font-size: 0;
+    position: absolute;
+    right: 4%;
+    top: 25px;
+
+    &:after {
+      content: '';
+      background: url('../../shared/assets/images/download.svg');
+      background-repeat: no-repeat;
+      width: 26px;
+      height: 26px;
+      position: absolute;
+      right: -20px;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+@media screen and (width < 350px) {
+  .cv {
+    padding: 2%;
+  }
 }

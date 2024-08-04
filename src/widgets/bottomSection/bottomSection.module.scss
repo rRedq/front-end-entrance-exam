@@ -4,3 +4,10 @@
   @include flex(space-between);
   height: 359px;
 }
+
+@media screen and (width < 620px) {
+  .container {
+    @include flex($direction: column-reverse, $wrap: wrap, $gap: 10px, $alignItems: center);
+    height: fit-content;
+  }
+}

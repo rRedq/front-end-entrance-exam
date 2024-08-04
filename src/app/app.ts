@@ -15,7 +15,7 @@ export const createApp = () => {
 
   const app = main({ className: style.cv }, [upperSection(), middleSection(), bottomSection()]);
 
-  const cover = div({ style: { position: 'relative' } }, [btn, app]);
+  const cover = div({ className: style.cover }, [btn, app]);
 
   return cover;
 };

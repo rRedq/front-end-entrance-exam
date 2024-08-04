@@ -9,3 +9,15 @@
   @include flex(space-between, $direction: column);
   width: 267px;
 }
+
+@media screen and (width < 620px) {
+  .container {
+    @include flex(center, $wrap: wrap, $gap: 10px);
+    height: fit-content;
+  }
+
+  .rightBlock {
+    @include flex(space-between, $direction: column, $gap: 10px);
+    width: 100%;
+  }
+}

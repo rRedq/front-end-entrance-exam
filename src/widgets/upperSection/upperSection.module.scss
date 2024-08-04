@@ -4,3 +4,10 @@
   @include flex(space-between);
   height: 124px;
 }
+
+@media screen and (width < 620px) {
+  .container {
+    @include flex(center, $wrap: wrap, $gap: 10px);
+    height: fit-content;
+  }
+}
