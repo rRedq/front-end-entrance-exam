@@ -1,9 +1,9 @@
-import { div, p, ul, li, input } from 'shared/lib/dom/tag-function';
+import { div, p, ul, li, input, h2 } from 'shared/lib/dom/tag-function';
 import style from './experience.module.scss';
 import { ExperienceData } from 'shared/types/dataTypes';
 import { showModal } from 'features/showModal';
 import { initialData } from 'shared/initialData';
-import { getLocalState, setLocalState } from 'shared/lib/utils';
+import { getLocalState, setLocalState, setWaveEffect } from 'shared/lib/utils';
 
 const localState = getLocalState('experience');
 const data = localState ? localState : [...initialData.experience];
@@ -20,7 +20,7 @@ const createLeftSide = (position: string, time: string, i: number) => {
     onclick: () => updateExperience('time', i, experiencedTime),
   });
 
-  return div({ className: style.container, style: { width: '124px' } }, [
+  return div({ className: style.container, style: { width: '124px', overflow: 'hidden' } }, [
     experiencedPosition,
     experiencedTime,
   ]);
@@ -44,31 +44,38 @@ const createLine = (param: ExperienceData, i: number) => {
   const { period, position, time, list } = param;
 
   const experiencePeriod = div({
+    className: style.time,
     textContent: period,
     onclick: () => updateExperience('period', i, experiencePeriod),
   });
-  return div({ className: !i ? `${style.cover} ${style.firstItem}` : style.cover }, [
-    div(
-      { className: `${style.title} ${style.firstCase}` },
-      !i
-        ? [experiencePeriod, div({ className: style.firstLabel, textContent: 'most recent' })]
-        : [experiencePeriod]
-    ),
-    div({ style: { display: 'flex', gap: '25px', justifyContent: 'start' } }, [
-      createLeftSide(position, time, i),
-      createRightSide(list, i),
-    ]),
-  ]);
+  const experienceLine = div(
+    { className: style.cover, onclick: (e) => setWaveEffect(experienceLine, e) },
+    [
+      div(
+        { className: style.firstCase },
+        !i
+          ? [experiencePeriod, div({ className: style.firstLabel, textContent: 'most recent' })]
+          : [experiencePeriod]
+      ),
+      div({ style: { display: 'flex', gap: '22px', justifyContent: 'start' } }, [
+        createLeftSide(position, time, i),
+        createRightSide(list, i),
+      ]),
+    ]
+  );
+
+  return experienceLine;
 };
 
 export const experience = () => {
-  return div({ className: style.wrapper }, [
-    p({ className: 'label', textContent: 'Experience' }),
+  const wrapper = div({ className: style.wrapper }, [
+    h2({ className: 'label', textContent: 'Experience' }),
     div(
       { className: style.container, style: { gap: '10px' } },
       data.map((item, i) => createLine(item, i))
     ),
   ]);
+  return wrapper;
 };
 
 const updateExperience = (

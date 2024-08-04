@@ -1,8 +1,10 @@
 import style from './showModal.module.scss';
 import { div, button } from 'shared/lib/dom/tag-function';
 
-export const showModal = (content: HTMLElement, callback?: () => void) => {
-  const overlay = div({ className: style.overlay });
+const activeModal = 'active-modal';
+
+const showModal = (content: HTMLElement, callback?: () => void) => {
+  const overlay = div({ className: `${style.overlay} ${activeModal}` });
   const closeBtn = div({
     className: style.close,
     onclick: () => closeModal(modal, overlay),
@@ -16,7 +18,7 @@ export const showModal = (content: HTMLElement, callback?: () => void) => {
     },
   });
   const cancelBtn = button({
-    className: style.btn,
+    className: style.cancel,
     textContent: 'Cancel',
     onclick: () => closeModal(modal, overlay),
   });
@@ -38,3 +40,5 @@ const closeModal = (modal: HTMLElement, overlay: HTMLElement) => {
     overlay.remove();
   }, 300);
 };
+
+export { showModal, activeModal };

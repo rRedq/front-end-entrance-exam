@@ -13,31 +13,58 @@
 
 .cover {
   @include flex($direction: column, $gap: 8px);
+  @include wave;
   background: var(--white);
   border-radius: 10px;
   padding: 8px;
+  max-height: 100px;
+
+  &:first-child {
+    background: var(--toxic-green);
+    color: var(--white);
+  }
 }
 
 .firstCase {
   @include flex(space-between);
 }
 
-.firstItem {
-  background: var(--toxic-green);
-}
-
 .firstLabel {
   @include fontShape(8px, 500, 12.4px);
-  background: #7e7312 40%;
-  padding: 2px 3px;
+  background: rgba(126, 115, 18, 0.433);
+  padding: 2px 6px;
   color: var(--yellow);
   border-radius: 59px;
 }
 
+.time {
+  @include flex($alignItems: center);
+  @include fontShape(8px, 500, 12px);
+  max-width: 200px;
+  overflow: hidden;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 .title {
   @include fontShape(8px, 500, 12px);
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &::marker {
+    font-size: 0.6em;
+  }
 }
 
 .position {
   @include fontShape(10px, 500, 15px);
+  width: 122px;
+
+  &:hover {
+    cursor: pointer;
+  }
 }

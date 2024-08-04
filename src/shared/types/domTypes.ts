@@ -2,7 +2,7 @@ interface BaseTagsProps {
   className?: string;
   textContent?: string;
   style?: { [key: string]: string };
-  onclick?: (e: Event) => void;
+  onclick?: (e: MouseEvent) => void;
 }
 
 interface InputProps extends BaseTagsProps {

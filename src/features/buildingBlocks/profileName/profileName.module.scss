@@ -5,21 +5,13 @@
   @include flex(space-between, $direction: column);
   width: 124px;
   background: var(--light-grey);
-
-  p {
-    @include fontShape(10px, 500, 15px);
-    text-align: left;
-    word-wrap: break-word;
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
+  text-align: left;
 
   h1 {
     @include fontShape(14px, 600, 14.56px);
+    @include wave;
     color: var(--black);
-    text-align: left;
+    overflow: hidden;
 
     &:hover {
       cursor: pointer;
@@ -27,8 +19,23 @@
   }
 }
 
+.greet {
+  @include fontShape(10px, 500, 15px);
+  @include wave;
+  word-wrap: break-word;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 .field {
   @include fontShape(12px, 500, 18px);
-  text-align: left;
+  @include wave;
   color: var(--deep-grey);
+  overflow: hidden;
+
+  &:hover {
+    cursor: pointer;
+  }
 }

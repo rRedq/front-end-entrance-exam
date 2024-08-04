@@ -20,7 +20,7 @@ export const initialData: InitialData = {
       source: 'Coursera',
     },
     {
-      year: '2017 - 2021',
+      year: '2017-2021',
       title: 'Graphic design',
       tags: ['branding', 'web', 'illustration', 'adobe'],
       source: 'Cali Institute of the Arts',
@@ -76,16 +76,16 @@ export const initialData: InitialData = {
     },
     {
       language: 'Spanish',
-      level: '80',
+      level: '78',
     },
     {
       language: 'French',
-      level: '70',
+      level: '66',
     },
   ],
   profileName: {
     greeting: 'Hello 👋🏻 I’m',
     name: 'Graham Hunt',
-    position: 'Brand / Logo Designer',
+    position: 'Brand/Logo Designer',
   },
 };

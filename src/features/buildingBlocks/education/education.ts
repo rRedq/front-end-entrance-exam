@@ -1,58 +1,78 @@
-import { div, img, p, input } from 'shared/lib/dom/tag-function';
+import { div, img, input, h2 } from 'shared/lib/dom/tag-function';
 import style from './education.module.scss';
 import heart from 'shared/assets/images/heart.svg';
 import { showModal } from 'features/showModal';
 import { EducationItem } from 'shared/types/dataTypes';
 import { initialData } from 'shared/initialData';
-import { getLocalState, setLocalState } from 'shared/lib/utils';
+import { getLocalState, setLocalState, setWaveEffect } from 'shared/lib/utils';
 
 const localState = getLocalState('education');
-const data = localState ? localState : [...initialData.education];
+const data: EducationItem[] = localState ? localState : [...initialData.education];
 
-const createCase = (obj: EducationItem, i: number) => {
-  const keys = Object.keys(obj) as (keyof EducationItem)[];
-  const values: string[] = Object.values(obj);
-
-  const fields = values.map((value, index) => {
-    if (keys[index] === 'tags' && Array.isArray(value)) {
-      return div(
-        {
-          className: style.secondaryTitle,
-          style: { display: 'flex', flexWrap: 'wrap', gap: '3px' },
-        },
-        value.map((item, valueIndex) => {
-          const elem = div({
-            textContent: `#${item}`,
-            onclick: () => updateEducation(keys[index], i, elem, valueIndex),
-          });
-          return elem;
-        })
-      );
-    } else if (keys[index] === 'year' && !i && !index) {
-      const elem = div({
-        className: style.primaryTitle,
-        textContent: value,
-        onclick: () => updateEducation(keys[index], i, elem),
-      });
-      return div({ className: style.firstContainer }, [elem, img({ src: heart, alt: heart })]);
-    } else {
-      const elem = div({
-        className: `${index === values.length - 1 ? style.secondaryTitle : style.primaryTitle}`,
-        textContent: value,
-        onclick: () => updateEducation(keys[index], i, elem),
-      });
-      return elem;
-    }
-  });
-
-  return div({ className: !i ? `${style.case} ${style.firstCase}` : style.case }, fields);
+const createYear = (i: number) => {
+  const value = data[i].year;
+  if (!i) {
+    const elem = div({
+      className: style.primaryTitle,
+      textContent: value,
+      onclick: () => updateEducation('year', i, elem),
+    });
+    return div({ className: style.firstContainer }, [elem, img({ src: heart, alt: heart })]);
+  } else {
+    const elem = div({
+      className: style.primaryTitle,
+      textContent: value,
+      onclick: () => updateEducation('year', i, elem),
+    });
+    return elem;
+  }
 };
 
-const fields = data.map((item, index) => createCase(item, index));
+const createContent = (i: number) => {
+  const tags = div(
+    {
+      className: style.secondaryTitle,
+      style: { display: 'flex', flexWrap: 'wrap', columnGap: '3px' },
+    },
+    data[i].tags.map((item, valueIndex) => {
+      const elem = div({
+        className: style.tags,
+        textContent: `#${item}`,
+        onclick: () => updateEducation('tags', i, elem, valueIndex),
+      });
+      return elem;
+    })
+  );
+  const title = div({
+    className: style.primaryTitle,
+    textContent: data[i].title,
+    onclick: () => updateEducation('title', i, title),
+  });
+
+  return div({}, [title, tags]);
+};
+
+const createSource = (i: number) => {
+  const elem = div({
+    className: style.secondaryTitle,
+    textContent: data[i].source,
+    onclick: () => updateEducation('source', i, elem),
+  });
+  return elem;
+};
+
+const fields = data.map((_, i) => {
+  const cover = div({ className: style.case, onclick: (e) => setWaveEffect(cover, e) }, [
+    createYear(i),
+    createContent(i),
+    createSource(i),
+  ]);
+  return cover;
+});
 
 export const education = () => {
   return div({ className: style.wrapper }, [
-    p({ className: 'label', textContent: 'Education' }),
+    h2({ className: 'label', textContent: 'Education' }),
     div({ className: style.container }, fields),
   ]);
 };

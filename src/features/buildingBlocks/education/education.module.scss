@@ -2,27 +2,34 @@
 
 .wrapper {
   @include block;
+  @include flex($direction: column, $gap: 16px);
   width: 268px;
   height: 100%;
 }
 
 .container {
-  @include flex($wrap: wrap, $gap: 10px);
+  @include flex(space-between, $wrap: wrap, $gap: 12px);
 }
 
 .case {
-  @include flex($direction: column, $gap: 7px);
+  @include flex($direction: column, $gap: 8px);
+  @include wave;
   width: 116px;
-  min-height: 108px;
+  max-height: 120px;
   height: fit-content;
   background: var(--white);
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 8px;
   text-align: start;
-}
 
-.firstCase {
-  background: var(--toxic-green);
+  &:first-child {
+    background: var(--toxic-green);
+    color: var(--white);
+
+    .tags {
+      color: var(--cream);
+    }
+  }
 }
 
 .firstContainer {
@@ -31,9 +38,22 @@
 
 .primaryTitle {
   @include fontShape($fw: 500, $lh: 15px);
+  overflow: hidden;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .secondaryTitle {
   @include fontShape(8px, 400, 12px);
-  word-wrap: break-word;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.tags {
+  color: var(--green);
+  overflow: hidden;
 }

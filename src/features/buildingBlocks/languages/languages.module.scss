@@ -12,6 +12,7 @@
 
 .line {
   @include flex(start);
+  @include wave;
   height: 11px;
 
   &:hover {
@@ -21,12 +22,15 @@
 
 .language {
   @include fontShape(10px, 500, 10.4px);
-  width: 70px;
+  width: 58px;
   text-align: start;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .level {
-  width: 70%;
+  flex-grow: 1;
+  border-radius: 3px;
 }
 
 .fill {

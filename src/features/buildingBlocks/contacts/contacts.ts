@@ -1,9 +1,9 @@
-import { div, input, p } from 'shared/lib/dom/tag-function';
+import { div, h2, input } from 'shared/lib/dom/tag-function';
 import style from './contacts.module.scss';
 import { showModal } from 'features/showModal';
 import { ContactsData } from 'shared/types/dataTypes';
 import { initialData } from 'shared/initialData';
-import { getLocalState, setLocalState } from 'shared/lib/utils';
+import { getLocalState, setLocalState, setWaveEffect } from 'shared/lib/utils';
 
 const localState = getLocalState('contacts');
 let data = localState ? localState : { ...initialData.contacts };
@@ -11,18 +11,29 @@ let data = localState ? localState : { ...initialData.contacts };
 export const contacts = () => {
   const { label, email, phone } = data;
 
-  const contactLabel = p({
-    className: 'label',
+  const contactLabel = h2({
+    className: `${style.wave} label`,
     textContent: label,
-    onclick: () => updateContacts('label', contactLabel),
+    onclick: (e) => {
+      setWaveEffect(contactLabel, e);
+      updateContacts('label', contactLabel);
+    },
   });
   const contactEmail = div({
+    className: style.wave,
     textContent: email,
-    onclick: () => updateContacts('email', contactEmail),
+    onclick: (e) => {
+      setWaveEffect(contactEmail, e);
+      updateContacts('email', contactEmail);
+    },
   });
   const contactPhone = div({
+    className: style.wave,
     textContent: phone,
-    onclick: () => updateContacts('phone', contactPhone),
+    onclick: (e) => {
+      setWaveEffect(contactPhone, e);
+      updateContacts('phone', contactPhone);
+    },
   });
 
   return div({ className: style.wrapper }, [

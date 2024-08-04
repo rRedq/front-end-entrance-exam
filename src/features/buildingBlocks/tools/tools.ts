@@ -12,7 +12,7 @@ import logoWordpress from 'shared/assets/logo/logoWordpress.svg';
 import logoChatGPT from 'shared/assets/logo/logoChatGPT.svg';
 import logoCopilot from 'shared/assets/logo/logoCopilot.svg';
 import logoMidjourney from 'shared/assets/logo/logoMidjourney.svg';
-import { div, img, p } from 'shared/lib/dom/tag-function';
+import { div, h2, img } from 'shared/lib/dom/tag-function';
 
 const createCover = (arr: string[], key: string) => {
   return div({ className: style.cover }, [
@@ -25,7 +25,7 @@ export const tools = () => {
   const keys = Object.keys(data);
   const values = Object.values(data);
   return div({ className: style.wrapper }, [
-    p({ className: 'label', textContent: 'Tools' }),
+    h2({ className: 'label', textContent: 'Tools' }),
     div(
       { className: style.container },
       values.map((item, i) => createCover(item, keys[i]))

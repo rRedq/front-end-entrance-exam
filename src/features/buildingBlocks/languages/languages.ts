@@ -1,9 +1,9 @@
-import { div, input, p } from 'shared/lib/dom/tag-function';
+import { div, h2, input } from 'shared/lib/dom/tag-function';
 import style from './languages.module.scss';
 import { LanguageData } from 'shared/types/dataTypes';
 import { showModal } from 'features/showModal';
 import { initialData } from 'shared/initialData';
-import { getLocalState, setLocalState } from 'shared/lib/utils';
+import { getLocalState, setLocalState, setWaveEffect } from 'shared/lib/utils';
 
 const localState = getLocalState('languages');
 const data: LanguageData[] = localState ? localState : [...initialData.languages];
@@ -13,15 +13,22 @@ const createLine = (obj: LanguageData, index: number) => {
   const languageCover = div({ className: style.language, textContent: language });
   const fill = div({ className: style.fill, style: { width: `${level}%` } });
 
-  return div({ className: style.line, onclick: () => updateLanguage(languageCover, fill, index) }, [
-    languageCover,
-    div({ className: style.level }, [fill]),
-  ]);
+  const line = div(
+    {
+      className: style.line,
+      onclick: (e) => {
+        setWaveEffect(line, e);
+        updateLanguage(languageCover, fill, index);
+      },
+    },
+    [languageCover, div({ className: style.level }, [fill])]
+  );
+  return line;
 };
 
 export const languages = () => {
   return div({ className: style.wrapper }, [
-    p({ className: 'label', textContent: 'Languages' }),
+    h2({ className: 'label', textContent: 'Languages' }),
     div(
       { className: style.container },
       data.map((item, i) => createLine(item, i))

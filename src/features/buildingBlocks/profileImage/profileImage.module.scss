@@ -1,4 +1,7 @@
+@import '../../../app/styles/common.scss';
+
 .wrapper {
+  @include block;
   width: 124px;
   border-radius: var(--radius);
   background: url(../../../shared/assets/images/profileImg.png);

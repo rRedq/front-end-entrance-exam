@@ -3,16 +3,32 @@
 .wrapper {
   @include block;
   @include flex($direction: column, $gap: 11px);
+  @include wave;
   width: 100%;
   background: var(--black);
 
-  p {
+  h2 {
     color: var(--white);
+    max-height: 42px;
+    overflow: hidden;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 
 .container {
   @include flex($gap: 8px);
   @include fontShape;
-  color: var(--white);
+  color: #dddddd;
+  overflow: hidden;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.wave {
+  @include wave;
 }

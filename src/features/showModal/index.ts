@@ -1,1 +1,1 @@
-export { showModal } from './showModal';
+export { showModal, activeModal } from './showModal';

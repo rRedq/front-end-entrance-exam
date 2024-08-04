@@ -29,6 +29,10 @@ const h1 = (props: BaseTagsProps) => {
   return createElement<BaseTagsProps, HTMLHeadingElement>('h1', props);
 };
 
+const h2 = (props: BaseTagsProps) => {
+  return createElement<BaseTagsProps, HTMLHeadingElement>('h2', props);
+};
+
 const img = (props: BaseTagsProps & { src: string; alt: string }) => {
   return createElement<BaseTagsProps, HTMLImageElement>('img', props);
 };
@@ -41,4 +45,8 @@ const button = (props: BaseTagsProps & { disabled?: boolean }) => {
   return createElement<BaseTagsProps, HTMLButtonElement>('button', props);
 };
 
-export { div, p, h1, main, section, img, ul, li, input, button };
+const span = (props: BaseTagsProps) => {
+  return createElement<BaseTagsProps, HTMLSpanElement>('span', props);
+};
+
+export { div, p, h1, main, section, img, ul, li, input, button, h2, span };
