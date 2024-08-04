@@ -4,6 +4,7 @@ import { div, button } from 'shared/lib/dom/tag-function';
 const activeModal = 'active-modal';
 
 const showModal = (content: HTMLElement, callback?: () => void) => {
+  document.body.style.overflow = 'hidden';
   const overlay = div({ className: `${style.overlay} ${activeModal}` });
   const closeBtn = div({
     className: style.close,
@@ -22,7 +23,7 @@ const showModal = (content: HTMLElement, callback?: () => void) => {
     textContent: 'Cancel',
     onclick: () => closeModal(modal, overlay),
   });
-  const modal = div({ className: style.modal }, [
+  const modal = div({ className: style.modal, textContent: 'Enter new value' }, [
     content,
     closeBtn,
     div({ className: style.btnCover }, [cancelBtn, saveBtn]),
@@ -34,6 +35,7 @@ const showModal = (content: HTMLElement, callback?: () => void) => {
 };
 
 const closeModal = (modal: HTMLElement, overlay: HTMLElement) => {
+  document.body.style.overflow = 'auto';
   modal.classList.remove(style['modal-active']);
   setTimeout(() => {
     modal.remove();

@@ -9,12 +9,14 @@
   top: 0;
 }
 .modal {
-  @include flex(center, 10px, column, $alignItems: center);
+  @include flex(center, 20px, column, $alignItems: center);
   position: absolute;
   min-width: 200px;
   min-height: 50px;
-  margin: 20px;
-  padding: 2% 1%;
+  margin: 10px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 20px 15px 10px;
   border-radius: 4px;
   background: var(--pearl);
   z-index: 1;
@@ -26,6 +28,11 @@
   &-active {
     transform: scale(1);
   }
+
+  input {
+    border-radius: 4px;
+    padding: 5px;
+  }
 }
 
 .close {
@@ -34,16 +41,16 @@
   border-radius: 50%;
   background: var(--white);
   position: absolute;
-  top: -20%;
+  top: -10%;
   right: -5%;
 
   &:hover {
     cursor: pointer;
-    background: var(--white);
+    background: var(--red);
 
     &:before,
     &:after {
-      background: var(--pearl);
+      background: var(--white);
     }
   }
 
