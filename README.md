@@ -26,23 +26,19 @@
 
 Клонируйте репозиторий:
 
-    ```bash
-    git clone https://github.com/rRedq/front-end-entrance-exam.git .
-    ```
+```bash
+   git clone https://github.com/rRedq/front-end-entrance-exam.git .
+```
 
 Для сборки в dev режиме:
 
-    ```bash
-    npm run dev
-    ```
-
-Перейдите по ссылке `http://localhost:5173/front-end-entrance-exam/`
+```bash
+   npm run dev
+```
 
 Для сборки в prod режиме:
 
-    ```bash
-    npm run build
-    npm run preview
-    ```
-
-Перейдите по ссылке `http://localhost:4173/front-end-entrance-exam/`
+```bash
+   npm run build
+   npm run preview
+```
