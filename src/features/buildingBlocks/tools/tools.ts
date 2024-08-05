@@ -1,17 +1,17 @@
 import style from './tools.module.scss';
-import logoAnalytics from 'shared/assets/logo/logoanalytics.svg';
-import logoCreativeCloud from 'shared/assets/logo/logoCreativeCloud.svg';
-import logoFigma from 'shared/assets/logo/logoFigma.svg';
-import logoMeet from 'shared/assets/logo/logoMeet.svg';
-import logoMiro from 'shared/assets/logo/logoMiro.svg';
-import logoNotion from 'shared/assets/logo/logoNotion.svg';
-import logoZapìer from 'shared/assets/logo/logoZapìer.svg';
-import logoWebflow from 'shared/assets/logo/logoWebflow.svg';
-import logoFramer from 'shared/assets/logo/logoFramer.svg';
-import logoWordpress from 'shared/assets/logo/logoWordpress.svg';
-import logoChatGPT from 'shared/assets/logo/logoChatGPT.svg';
-import logoCopilot from 'shared/assets/logo/logoCopilot.svg';
-import logoMidjourney from 'shared/assets/logo/logoMidjourney.svg';
+import logoAnalytics from 'shared/assets/logo/logoanalytics.png';
+import logoCreativeCloud from 'shared/assets/logo/logoCreativeCloud.png';
+import logoFigma from 'shared/assets/logo/logoFigma.png';
+import logoMeet from 'shared/assets/logo/logoMeet.png';
+import logoMiro from 'shared/assets/logo/logoMiro.png';
+import logoNotion from 'shared/assets/logo/logoNotion.png';
+import logoZapìer from 'shared/assets/logo/logoZapìer.png';
+import logoWebflow from 'shared/assets/logo/logoWebflow.png';
+import logoFramer from 'shared/assets/logo/logoFramer.png';
+import logoWordpress from 'shared/assets/logo/logoWordpress.png';
+import logoChatGPT from 'shared/assets/logo/logoChatGPT.png';
+import logoCopilot from 'shared/assets/logo/logoCopilot.png';
+import logoMidjourney from 'shared/assets/logo/logoMidjourney.png';
 import { div, h2, img } from 'shared/lib/dom/tag-function';
 
 const createCover = (arr: string[], key: string) => {
